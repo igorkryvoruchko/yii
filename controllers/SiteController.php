@@ -77,7 +77,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $mail = new Mailer();
-            var_dump($mail->createBody(Yii::$app->request->post('EntryForm')));die();
+            $mail->sendEmail(Yii::$app->request->post('EntryForm'));
             $model->attributes = Yii::$app->request->post('EntryForm');
             $model->save();
             return $this->render('entry-confirm', ['model' => $model]);

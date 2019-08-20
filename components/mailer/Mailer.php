@@ -13,7 +13,7 @@ class Mailer
     public function createBody($data){
         $tableData = "";
         foreach ($data as $key => $value){
-            $tableData += "
+            $tableData .= "
                 <tr>
                     <td>$key</td>
                     <td>$value</td>
@@ -36,7 +36,7 @@ class Mailer
             //Server settings
             $mail->SMTPDebug = 2;                                       // Enable verbose debug output
             $mail->isSMTP();                                            // Set mailer to use SMTP
-            $mail->Host       = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
+            $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
             $mail->Username   = self::USER_NAME;                        // SMTP username
             $mail->Password   = self::PASSWORD;                         // SMTP password
@@ -50,7 +50,7 @@ class Mailer
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Here is the subject';
-            $mail->Body    = $this->mailBody;
+            $mail->Body    = $this->createBody($data);
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
