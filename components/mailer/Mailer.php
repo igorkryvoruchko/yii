@@ -21,7 +21,7 @@ class Mailer
             ";
         }
         $this->mailBody = "
-            <table> 
+            <table style='border: 1px solid black'> 
                 $tableData
             </table>
         ";

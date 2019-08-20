@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\createDocument\CreateDocument;
 use app\components\mailer\Mailer;
 use app\models\EntryForm;
 use Yii;
@@ -78,6 +79,8 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $mail = new Mailer();
             $mail->sendEmail(Yii::$app->request->post('EntryForm'));
+            $document = new CreateDocument();
+            $document->create(Yii::$app->request->post('EntryForm'));
             $model->attributes = Yii::$app->request->post('EntryForm');
             $model->save();
             return $this->render('entry-confirm', ['model' => $model]);
