@@ -19,7 +19,7 @@ class EntryForm extends ActiveRecord
     public function scenarios()
     {
         return [
-            self::SCENARIO_ORDER => ['domain', 'registr', 'success', 'design', 'admin', 'speed', 'usability', 'ranging', 'else_problem', 'name', 'email', 'phone', 'sex', 'age', 'middle', 'top', 'else_class', 'locations']
+            self::SCENARIO_ORDER => ['title','domain', 'registr', 'success', 'design', 'admin', 'speed', 'usability', 'ranging', 'else_problem', 'name', 'email', 'phone', 'sex', 'age', 'middle', 'top', 'else_class', 'locations']
         ];
     }
 }
